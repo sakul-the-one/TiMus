@@ -1,11 +1,3 @@
-/*
- *--------------------------------------
- * Program Name: WhatsApp
- * Author: now sakul
- * License: Use at own Risk
- * Description: Hippity Hoppity
- *--------------------------------------
-*/
 #include "Graphics/Graphicsfunc.h"
 #include <srldrvce.h>
 
@@ -111,18 +103,15 @@ int main(void) {
         if (has_srl_device) {
             char in_buf[128]; //32 Chars per person... Raspberry has only 4 Ports -> Max 4 persons
             //srl_Write(&srl, "Hello wrold Computer!", 22);
-            //Read up to ~~64~~ 128 bytes from the serial buffer //
+            //Read up to ~~64~~ **128** bytes from the serial buffer
             size_t bytes_read = srl_Read(&srl, in_buf, sizeof in_buf);
 
-            // Check for an error (e.g. device disconneced) //
+            // Check for an error (e.g. device disconneced) 
             if (bytes_read < 0) {
                 GetMessage("calc: error on srl_Read\n", 25);
                 has_srl_device = false;
             } else if (bytes_read > 0) { 
-                // Write the data back to serial //
-                //os_PutStrFull(&in_buf);
                 GetMessage(in_buf, sizeof in_buf);
-                //srl_Write(&srl, in_buf, bytes_read);
             }
             //we got a message to send:
             if (send != NULL) 
@@ -137,31 +126,6 @@ int main(void) {
             
         }
     }
-    /*
-    do {
-        kb_Scan();
-
-        usb_HandleEvents();
-
-        if (has_srl_device) {
-            char in_buf[64];
-
-            //Read up to 64 bytes from the serial buffer //
-            size_t bytes_read = srl_Read(&srl, in_buf, sizeof in_buf);
-
-            // Check for an error (e.g. device disconneced) //
-            if (bytes_read < 0) {
-                os_PutStrFull("error  on srl_Read\n");
-                has_srl_device = false;
-            } else if (bytes_read > 0) {
-                // Write the data back to serial //
-                os_PutStrFull(&in_buf);
-                srl_Write(&srl, in_buf, bytes_read);
-            }
-        }
-
-    } while(!kb_IsDown(kb_KeyClear));*/
-    
     usb_Cleanup();
     Close();
     return 0;

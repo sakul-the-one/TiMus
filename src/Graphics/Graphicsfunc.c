@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <graphx.h>
-//#include <keypadc.h>
 
 #define MaxScreenX 320
 #define MaxScreenY 240
@@ -138,13 +137,9 @@ char * HandleKeyBoard(uint8_t Ikey)
         case sk_DecPnt: key = '.'; break;
         case sk_Chs: key = '?'; break;
         case sk_Yequ: key = '!'; break;
-        //case sk_: key = '?'; break; //1. idk the key, 2. Who needs a question anyways??
         default:
             return NULL;
     }
-    //test[0] = key;
-    //test[1] = '\0';
-    //GetMessage(test, 2);
     if(CMpos < PreDel)
         CMpos = PreDel;
     if (CMpos >= 31)

@@ -68,7 +68,7 @@ if __name__ == '__main__':
     UpdateSerial()
     print("Init done")
     message = []
-    while message != "777: !STOP\0":
+    while message != "777: !STOP\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0":
         #Read all messages
         error = -1
         message = []
